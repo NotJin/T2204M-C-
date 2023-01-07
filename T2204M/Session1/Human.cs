@@ -5,6 +5,15 @@ namespace T2204M.session1
     {
         public string name;
         public int age;
+        public Human()
+        {
+            Console.WriteLine("Human: Hello World");
+        }
+
+        ~Human() //destructor: 
+        {
+
+        }
 
         public void Eat()
         {
