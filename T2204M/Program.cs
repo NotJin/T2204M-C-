@@ -34,7 +34,7 @@ public class Program
 
         };
 
-        Button de = new Button();
+        Button de = new Button(ps3);
         de.ClickAction();
     }
 
