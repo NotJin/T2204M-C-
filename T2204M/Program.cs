@@ -3,10 +3,46 @@ using T2204M.bill;
 using T2204M.session1;
 using T2204M.session2;
 using T2204M.Session2;
+using T2204M.Session3;
 
 public class Program
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
+    {
+        PrintString ps = new PrintString(ShowDanger);
+        //ps("Nguy hiem lam");
+        //PrintString ps1 = new PrintString(Demo1.Alert);
+        //PrintString ps2 = new PrintString(new Demo1().ShowMessage);
+
+        ps += Demo1.Alert;
+        ps += new Demo1().ShowMessage;
+
+        ps("Nguy hiem lam");
+
+        ps += (s) =>
+        {
+            Console.WriteLine("Anonymus: " + s);
+        };
+
+        ps += delegate (string s)
+        {
+            Console.WriteLine("Anonymus2: " + s);
+        };
+
+        PrintString ps3 = delegate (string s)
+        {
+
+        };
+
+        Button de = new Button();
+        de.ClickAction();
+    }
+
+    public static void ShowDanger(string mg)
+    {
+        Console.WriteLine("Danger: "+mg);
+    }
+    static void Main5(string[] args)
 
     {
         KhachHangVN a = new KhachHangVN(1, "Le Minh Duc", "2022-07-22", 219, "Cá nhân");

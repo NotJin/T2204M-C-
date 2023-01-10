@@ -8,12 +8,6 @@ namespace T2204M.bill
 {
     public class CustomerVN
     {
-        private string MaKH;
-        private string name;
-        private DateTime dateBill;
-        private double qty;
-        private double price;
-
         public CustomerVN()
         {
 
