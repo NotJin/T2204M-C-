@@ -4,10 +4,54 @@ using T2204M.session1;
 using T2204M.session2;
 using T2204M.Session2;
 using T2204M.Session3;
+using T2204M.session5;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 public class Program
 {
     public static void Main(string[] args)
+    {
+        Thread t1 = new Thread(RunThread);
+        t1.Start("Xin chao");
+        Thread t2 = new Thread(delegate () {
+            Console.WriteLine("demo anonymous function");
+        });
+        t2.Start();
+        Console.WriteLine("Main done");
+
+
+    }
+
+    static async Task<Root> CallApi()
+    {
+        string url = "https://api.openweathermap.org/data/2.5/weather?q=Hanoi,vietnam&appid=09a71427c59d38d6a34f89b47d75975c&units=metric";
+        HttpClient http = new HttpClient();
+        var rs = await http.GetAsync(url); // lay data ve
+
+        if (rs.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            string content = await rs.Content.ReadAsStringAsync();
+            Root r = JsonConvert.DeserializeObject<Root>(content);
+            return r;
+        }
+        return null;
+    }
+
+    static void RunThread(object o)
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            Console.WriteLine(o + ": " + i);
+            try
+            {
+                Thread.Sleep(1000);
+            }
+            catch (Exception e) { }
+        }
+    }
+
+    public static void Main5(string[] args)
     {
         PrintString ps = new PrintString(ShowDanger);
         //ps("Nguy hiem lam");
